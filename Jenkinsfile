@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build Dockerfile') {
       steps {
-        sh 'docker build . -t lakran21/capstone:latest'
+        sh 'virtualenv -p python2 .venv'
       }
     }
 
