@@ -1,10 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Lint HTML') {
+    stage('Linting') {
       steps {
-        sh 'echo "Linting HTML ..."'
-        sh 'tidy -q -e *.html'
+        sh 'echo "Hadolint Linting..."'
+        sh 'hadolint Dockerfile'
+        sh '''echo "Pylint Linting.---"
+'''
+        sh '''pylint --disable=R,C,W1203,W1201 app.py
+'''
       }
     }
 
