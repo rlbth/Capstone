@@ -1,4 +1,4 @@
-FROM codenvy/python27:latest
+FROM lakran21/mypython:0.0.1
 
 WORKDIR /app
 COPY . app.py /app/
