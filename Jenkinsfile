@@ -7,8 +7,6 @@ pipeline {
         sh 'hadolint Dockerfile'
         sh '''echo "Pylint Linting.---"
 '''
-        sh 'virtualenv -p python2 .venv'
-        sh 'source .venv/bin/activate'
         sh 'pip install -r requirements.txt'
         sh '''pylint --disable=R,C,W1203,W1201 app.py
 '''
