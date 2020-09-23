@@ -28,8 +28,7 @@ pipeline {
       steps {
         sh '''echo "Building ....."
 whoami'''
-        sh '''docker container ps
-'''
+        sh 'docker build . -t lakran21/capstone'
       }
     }
 
