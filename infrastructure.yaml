@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  Cloudformation stack to create EKS (Elastic Kubernetes Service) cluster
+Resources:
+  EKSCluster:
+    Type: "AWS::EKS::Cluster"
+    Properties:
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - sg-014ebe2e3e2b18d7a
+        SubnetIds:
+          - subnet-5bd91430
+          - subnet-c2f9c2b8
+      RoleArn: arn:aws:iam::596747885714:role/udacityEKS
+      Version: '1.14'
+      Name: udacityCluster
+
