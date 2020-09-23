@@ -16,7 +16,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         sh 'echo "Building ....."'
-        sh 'docker build . -t lakran21/capstone:0.1'
+        sh 'sudo docker build . -t lakran21/capstone:0.1'
       }
     }
 
