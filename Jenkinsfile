@@ -15,11 +15,8 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-          sh 'echo "Build the image"'
-          sh 'docker build -t lakran21/capstone .'
-        }
-
+        sh 'echo "Building ....."'
+        sh 'docker build . -t lakran21/capstone:0.1'
       }
     }
 
