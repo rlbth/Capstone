@@ -15,7 +15,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             sh 'whoami'
           }
@@ -27,7 +27,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         sh 'echo "Building ....."'
-        sh 'sudo docker build . -t lakran21/capstone:0.1'
+        sh 'docker build . -t lakran21/capstone:0.1'
       }
     }
 
