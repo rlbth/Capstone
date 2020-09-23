@@ -2,14 +2,25 @@ pipeline {
   agent any
   stages {
     stage('Linting') {
-      steps {
-        sh 'echo "Hadolint Linting..."'
-        sh 'hadolint Dockerfile'
-        sh '''echo "Pylint Linting.---"
+      parallel {
+        stage('Linting') {
+          steps {
+            sh 'echo "Hadolint Linting..."'
+            sh 'hadolint Dockerfile'
+            sh '''echo "Pylint Linting.---"
 '''
-        sh 'pip install -r requirements.txt'
-        sh '''pylint --disable=R,C,W1203,W1201 app.py
+            sh 'pip install -r requirements.txt'
+            sh '''pylint --disable=R,C,W1203,W1201 app.py
 '''
+          }
+        }
+
+        stage('') {
+          steps {
+            sh 'whoami'
+          }
+        }
+
       }
     }
 
