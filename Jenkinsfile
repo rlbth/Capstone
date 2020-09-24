@@ -49,21 +49,6 @@ sleep 5m
           }
         }
 
-        stage('B_Kubernetes') {
-          steps {
-            sh '''echo "Starting Kubernetes Deployment ..."
-aws eks --region us-east-2 update-kubeconfig --name udacityClusterStaging
-kubectl get pods --kubeconfig ./.kube/config
-kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
-'''
-          }
-        }
-
-      }
-    }
-
-    stage('G_Cloudformation') {
-      parallel {
         stage('G_Cloudformation') {
           steps {
             sh '''echo "Deleting and creating infrastructure ..."
@@ -74,16 +59,32 @@ sleep 5m'''
           }
         }
 
-        stage('G_Kubernetes') {
-          steps {
-            sh '''echo "Starting Kubernetes Deployment ..."
+      }
+    }
+
+    stage('B_Kubernetes') {
+      steps {
+        sh '''echo "Starting Kubernetes Deployment ..."
+aws eks --region us-east-2 update-kubeconfig --name udacityClusterStaging
+kubectl get pods --kubeconfig ./.kube/config
+kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
+'''
+      }
+    }
+
+    stage('G_Kubernetes') {
+      steps {
+        sh '''echo "Starting Kubernetes Deployment ..."
 aws eks --region us-east-2 update-kubeconfig --name udacityClusteProduction
 kubectl get pods --kubeconfig ./.kube/config
 kubectl run udacitycapstoneproduction --image=lakran21/capstone:latest
 '''
-          }
-        }
+      }
+    }
 
+    stage('Final') {
+      steps {
+        sh 'echo "Deployment Successful"'
       }
     }
 
