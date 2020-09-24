@@ -39,8 +39,6 @@ whoami'''
         stage('B_Cloudformation') {
           steps {
             sh '''echo "Deleting and creating infrastructure ..."
-aws cloudformation delete-stack --stack-name udacityCapstoneNodeBlue --region us-east-2
-aws cloudformation delete-stack --stack-name udacityCapstoneBlue --region us-east-2
 aws cloudformation create-stack --stack-name udacityCapstoneBlue --region us-east-2 --template-body file://blue_deployment/infrastructure.yaml
 aws cloudformation create-stack --stack-name udacityCapstoneNodeBlue --region us-east-2 --template-body file://blue_deployment/infrastructure_eksnodes.yaml
 
