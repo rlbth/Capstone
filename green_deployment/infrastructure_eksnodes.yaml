@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  Cloudformation stack to create EKS (Elastic Kubernetes Service) Node group
+Resources:
+  EKSNodeGroup:
+    Type: "AWS::EKS::Nodegroup"
+    Properties:
+      ClusterName: udacityClusterProduction
+      NodeRole: arn:aws:iam::596747885714:role/NodeInstanceRole
+      Subnets:
+        - subnet-5bd91430
+        - subnet-c2f9c2b8
+      ScalingConfig:
+        MinSize: 2
+        DesiredSize: 3
+        MaxSize: 5
+

@@ -13,6 +13,6 @@ Resources:
           - subnet-c2f9c2b8
       RoleArn: arn:aws:iam::596747885714:role/udacityEKS
       Version: '1.17'
-      Name: udacityCluster
+      Name: udacityClusterProduction
 
 
