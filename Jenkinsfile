@@ -40,7 +40,10 @@ whoami'''
           steps {
             sh '''echo "Deleting and creating infrastructure ..."
 aws cloudformation create-stack --stack-name udacityCapstoneBlue --region us-east-2 --template-body file://blue_deployment/infrastructure.yaml
+sleep 17m
 aws cloudformation create-stack --stack-name udacityCapstoneNodeBlue --region us-east-2 --template-body file://blue_deployment/infrastructure_eksnodes.yaml
+sleep 5m
+
 
 '''
           }
@@ -64,11 +67,10 @@ kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
         stage('G_Cloudformation') {
           steps {
             sh '''echo "Deleting and creating infrastructure ..."
-aws cloudformation delete-stack --stack-name udacityCapstoneNodeGreen --region us-east-2
-aws cloudformation delete-stack --stack-name udacityCapstoneGreen --region us-east-2
 aws cloudformation create-stack --stack-name udacityCapstoneGreen --region us-east-2 --template-body file://green_deployment/infrastructure.yaml
+sleep 17m
 aws cloudformation create-stack --stack-name udacityCapstoneNodeGreen --region us-east-2 --template-body file://green_deployment/infrastructure_eksnodes.yaml
-'''
+sleep 5m'''
           }
         }
 
