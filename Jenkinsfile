@@ -66,7 +66,7 @@ sleep 5m'''
       steps {
         sh '''echo "Starting Kubernetes Deployment ..."
 aws eks --region us-east-2 update-kubeconfig --name udacityClusterStaging
-kubectl get pods --kubeconfig ./.kube/config
+kubectl get pods --kubeconfig  /var/lib/jenkins/.kube/config
 kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
 '''
       }
@@ -76,7 +76,7 @@ kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
       steps {
         sh '''echo "Starting Kubernetes Deployment ..."
 aws eks --region us-east-2 update-kubeconfig --name udacityClusteProduction
-kubectl get pods --kubeconfig ./.kube/config
+kubectl get pods --kubeconfig  /var/lib/jenkins/.kube/config
 kubectl run udacitycapstoneproduction --image=lakran21/capstone:latest
 '''
       }
