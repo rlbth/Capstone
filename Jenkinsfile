@@ -75,7 +75,7 @@ kubectl run udacitycapstonestaging --image=lakran21/capstone:latest
     stage('G_Kubernetes') {
       steps {
         sh '''echo "Starting Kubernetes Deployment ..."
-aws eks --region us-east-2 update-kubeconfig --name udacityClusteProduction
+aws eks --region us-east-2 update-kubeconfig --name udacityClusterProduction
 kubectl get pods --kubeconfig  /var/lib/jenkins/.kube/config
 kubectl run udacitycapstoneproduction --image=lakran21/capstone:latest
 '''
